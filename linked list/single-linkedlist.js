@@ -7,7 +7,7 @@ function node(val){
     this.next = null;
 }
 
-singleLinkedList.prototype.push = function(val){
+singleLinkedList.prototype.insert = function(val){
     var head = this.head;
     if(!head){
         this.head = new node(val);
@@ -22,6 +22,28 @@ singleLinkedList.prototype.push = function(val){
         } else {
             currentNode = currentNode.next;
         }
+    }
+}
+
+// Reverse alternate nodes in linked list
+//Eg: 1->2->3->4->5 ahould become 2->1->4->3->5
+
+singleLinkedList.prototype.rotatealt = function(){
+
+    if (this.head == null){
+        return;
+    }else{
+        var current = this.head;
+        while(current.next != null){
+            var temp;
+            temp = current.value;
+            current.value = current.next.value;
+            current.next.value = temp;
+
+            if (current.next.next == null) return;
+            current = current.next.next;
+
+        }// end of while
     }
 }
 
@@ -55,24 +77,3 @@ singleLinkedList.prototype.rotatebykthnode = function(sll,k){
     return sll;
 }
 
-// Reverse alternate nodes in linked list
-//Eg: 1->2->3->4->5 ahould become 2->1->4->3->5
-
-singleLinkedList.prototype.rotatealt = function(root){
-
-    if (this.head == null){
-        return;
-    }else{
-        var current = this.head;
-        while(current.next != null){
-            var temp;
-            temp = current.value;
-            current.value = current.next.value;
-            current.next.value = temp;
-
-            if (current.next.next == null) return;
-            current = current.next.next;
-
-        }// end of while
-    }
-}
