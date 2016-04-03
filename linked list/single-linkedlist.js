@@ -7,6 +7,8 @@ function node(val){
     this.next = null;
 }
 
+// insert linked list
+
 singleLinkedList.prototype.insert = function(val){
     var head = this.head;
     if(!head){
@@ -42,10 +44,12 @@ singleLinkedList.prototype.rotatealt = function(){
 
             if (current.next.next == null) return;
             current = current.next.next;
-
-        }// end of while
+        }
     }
 }
+
+// Reverse nodes in linked list
+//Eg: 1->2->3->4->5 ahould become 5->4->3->2->1
 
 singleLinkedList.prototype.reverse = function(root){
     console.log(root);
@@ -77,3 +81,24 @@ singleLinkedList.prototype.rotatebykthnode = function(sll,k){
     return sll;
 }
 
+//Remove value from linked list
+
+singleLinkedList.prototype.remove = function(val){
+    var currentNode = this.head;
+    if(currentNode.value == val){
+        this.head = currentNode.next;
+    } else {
+        var previous = currentNode;
+        while(currentNode.next){
+            if(currentNode.value == val){
+                previous.next = currentNode.next;
+                break;
+            }
+            previous = currentNode;
+            currentNode = previous.next;
+        }
+        if(currentNode.value == val){
+            previous.next == null;
+        }
+    }
+}
