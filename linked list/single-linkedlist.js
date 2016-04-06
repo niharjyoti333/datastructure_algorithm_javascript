@@ -102,3 +102,21 @@ singleLinkedList.prototype.remove = function(val){
         }
     }
 }
+
+//Remove duplicates from unsorted linked list
+
+singleLinkedList.prototype.duplicate = function(){
+    if(this.head == null) return;
+    var current = this.head;
+    while(current != null){
+        var previous = current;
+        while(previous.next != null){
+            if(previous.next.value == current.value){
+                previous.next = previous.next.next;
+            } else {
+                previous = previous.next;
+            }
+        }
+        current = current.next;
+    }
+}
