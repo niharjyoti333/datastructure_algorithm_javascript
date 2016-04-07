@@ -120,3 +120,24 @@ singleLinkedList.prototype.duplicate = function(){
         current = current.next;
     }
 }
+
+// sorted linked list
+
+singleLinkedList.prototype.sort = function(){
+    if(this.head == null) return;
+    var current = this.head;
+    while(current != null){
+        var previous = current;
+        while(previous.next != null){
+            if(previous.next.value < current.value){
+                var temp;
+                temp = current.value;
+                current.value = previous.next.value;
+                previous.next.value = temp;
+            } else {
+                previous = previous.next;
+            }
+        }
+        current = current.next;
+    }
+}
