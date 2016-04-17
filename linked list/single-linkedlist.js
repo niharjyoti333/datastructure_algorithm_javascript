@@ -141,3 +141,11 @@ singleLinkedList.prototype.sort = function(){
         current = current.next;
     }
 }
+
+singleLinkedList.prototype.insertsorteddata = function(data,val){
+    var current = data.head;
+    if(current == null) return;
+    if(current.value > val){
+        data.head = {value:val, next:current}
+    }
+}
